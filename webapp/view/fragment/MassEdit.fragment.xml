@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<core:FragmentDefinition xmlns:m="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns="sap.ui.table">
+	<!--<m:Dialog id="massEditDialog" title="Mass Edit" class="sapUiPopupWithPadding" contentWidth="60rem" horizontalScrolling="false">-->
+	<m:buttons>
+		<m:Button text="Send" press="onDialogSaveButton" type="Emphasized"/>
+		<m:Button text="Cancel" press="onCloseDialog"/>
+	</m:buttons>
+	<m:HBox>
+		<m:ComboBox id="comboSegment" change="onSegmentChange" showSecondaryValues="true" width="200px" class="sapUiLargeMargin"
+			items="{ path: 'idocOverviewModel>/segment', sorter: { path: 'Segment' } }">
+			<core:ListItem key="{idocOverviewModel>Segment}" text="{idocOverviewModel>Segment_desc}" additionalText="{idocOverviewModel>Segment}"/>
+		</m:ComboBox>
+		<m:ComboBox id="comboSubSegment" change="onComSegmentChange" showSecondaryValues="true" width="200px" class="sapUiLargeMargin"
+			items="{ path: 'idocOverviewModel>/subsegment', sorter: { path: 'Sub_Segment' } }">
+			<core:ListItem key="{idocOverviewModel>Sub_Segment}" text="{idocOverviewModel>Sub_seg_desc}"
+				additionalText="{idocOverviewModel>Sub_Segment}"/>
+		</m:ComboBox>
+		<m:ComboBox id="comboFieldValue" change="onSegmentChange" showSecondaryValues="true" width="200px" class="sapUiLargeMargin"
+			items="{ path: 'idocOverviewModel>/fieldvalue', sorter: { path: 'Field_values' } }">
+			<core:ListItem key="{idocOverviewModel>Field_values}" text="{idocOverviewModel>Field_values}"/>
+		</m:ComboBox>
+	</m:HBox>
+	<!--</m:Dialog>-->
+</core:FragmentDefinition>

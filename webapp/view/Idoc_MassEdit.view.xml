@@ -1,0 +1,74 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns="sap.ui.table" xmlns:l="sap.ui.layout"
+	controllerName="com.idocmanagerui01.controller.Idoc_MassEdit" xmlns:html="http://www.w3.org/1999/xhtml">
+	<m:Page id="idocMassEditPage" title="{i18n>massEditTitle}" showNavButton="true" navButtonPress=".onNavBack" class="sapUiContentPadding">
+		<m:content>
+			<Table id="tblMassEdit" rows="{massEditModel>/massEditRqst}" visibleRowCount="15" class="sapUiTinyMarginBottom">
+				<extension>
+					<m:OverflowToolbar id="_IDGenOverflowToolbar1">
+						<!-- <m:Title id="title" text="{i18n>massEditTitle}"/> -->
+						<m:ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+						<m:Button id="_IDGenButton1" text="{i18n>save}" press="onSaveClick"/>
+						<m:Button id="_IDGenButton2" text="{i18n>cancel}" press="onCancelClick"/>
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column id="_IDGenColumn1" width="20rem">
+						<m:Label id="_IDGenLabel1" text="Supplier"/>
+						<template>
+							<m:ComboBox id="_IDGenComboBox1" change="onSegmentChange" showSecondaryValues="true" width="350px" selectedKey="{massEditModel>Segment}"
+								items="{ path: 'massEditModel>/segment',templateShareable:false, sorter: { path: 'Segment_desc' } }">
+								<core:ListItem id="_IDGenListItem1" key="{massEditModel>Segment}" text="{massEditModel>Segment_desc}" additionalText="{massEditModel>Segment}"/>
+							</m:ComboBox>
+						</template>
+					</Column>
+					<Column id="_IDGenColumn2" width="20rem">
+						<m:Label id="_IDGenLabel2" text="Field"/>
+						<template>
+							<m:ComboBox id="_IDGenComboBox2" change="onComSegmentChange" showSecondaryValues="true" width="350px" selectedKey="{massEditModel>Sub_Segment}"
+								items="{ path: 'massEditModel>/subsegment',templateShareable:false, sorter: { path: 'Sub_seg_desc' } }">
+								<core:ListItem id="_IDGenListItem2" key="{massEditModel>Sub_Segment}" text="{massEditModel>Sub_seg_desc}" additionalText="{massEditModel>Sub_Segment}"/>
+							</m:ComboBox>
+						</template>
+					</Column>
+					<Column id="_IDGenColumn3" width="20rem">
+						<m:Label id="_IDGenLabel3" text="Field Value"/>
+						<template>
+							<l:HorizontalLayout id="_IDGenHorizontalLayout1">
+								<l:content>
+									<m:ComboBox id="_IDGenComboBox3" showSecondaryValues="true" width="300px" selectedKey="{massEditModel>Field_values}"
+										items="{ path: 'massEditModel>/fieldvalue',templateShareable:false, sorter: { path: 'Field_values' } }">
+										<core:ListItem id="_IDGenListItem3" key="{massEditModel>Field_values}" text="{massEditModel>Field_values}"/>
+									</m:ComboBox>
+									<m:Input id="_IDGenInput1" value="{massEditModel>Field_values}" width="300px" visible="false"/>
+								</l:content>
+							</l:HorizontalLayout>
+						</template>
+					</Column>
+					<Column id="_IDGenColumn4" width="4rem">
+						<m:Label id="_IDGenLabel4" text="QLF"/>
+						<template>
+							<m:CheckBox id="_IDGenCheckBox1" selected="{ path : 'massEditModel>Segment_num' , type : 'sap.ui.model.type.Boolean'}" enabled="true"/>
+						</template>
+					</Column>
+					<Column id="_IDGenColumn5" width="4rem">
+						<m:Label id="_IDGenLabel5" text="Action"/>
+						<template>
+							<m:Button id="_IDGenButton3" text="{i18n>add}" press="onAddNewClick"/>
+						</template>
+					</Column>
+					<Column id="_IDGenColumn6" width="5rem">
+						<m:Label id="_IDGenLabel6" text=""/>
+						<template>
+							<m:Button id="_IDGenButton4" text="{i18n>delete}" press="onDeleteRowClick"/>
+						</template>
+					</Column>
+				</columns>
+				<!--<rowActionTemplate>-->
+				<!--	<RowAction>-->
+				<!--		<RowActionItem type="Delete" press="deleteRow"></RowActionItem>-->
+				<!--	</RowAction>-->
+				<!--</rowActionTemplate>-->
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>

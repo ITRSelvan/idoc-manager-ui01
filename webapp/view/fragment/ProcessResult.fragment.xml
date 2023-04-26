@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:rte="sap.ui.richtexteditor">
+	<Dialog id="processRsltDialog" title="Process Response" class="sapUiPopupWithPadding" contentWidth="60rem" horizontalScrolling="false">
+		<buttons>
+			<Button text="Ok" press="onCloseDialog"/>
+		</buttons>
+		<l:VerticalLayout class="sapUiContentPadding" width="100%">
+			<l:content>
+				<Table id="wfTable" items="{ path: 'processRespModel>/', sorter: { path: 'Idoc_Number', descending: false }}">
+					<columns>
+						<Column id="numberColumnWf">
+							<Text text="{i18n>tableNumberColumnTitle}" id="idocrColumnTitle"/>
+						</Column>
+						<Column id="custNamerColumnWf">
+							<Text text="{i18n>tableResponseColumnTitle}" id="statusColumnTitle"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="_IDEGen_Wf_columnlistitem0">
+							<cells>
+								<Text id="_IDEGen_Wf_text0" maxLines="0" text="{processRespModel>Idoc_Number}"/>
+								<Text id="_IDEGen_Wf_text1" maxLines="0" text="{processRespModel>Status}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</l:content>
+		</l:VerticalLayout>
+	</Dialog>
+</core:FragmentDefinition>

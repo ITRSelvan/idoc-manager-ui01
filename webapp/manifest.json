@@ -1,0 +1,160 @@
+{
+    "_version": "1.17.0",
+    "sap.app": {
+        "id": "com.idocmanagerui01",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.9.3",
+            "toolsId": "e9cf5829-1901-4392-8442-a95c09330eea"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZITR_IDM_GW_IDOC_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.71.55",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.idocmanagerui01.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.idocmanagerui01.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteIdoc_Overview",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetIdoc_Overview"
+                    ]
+                },
+                {
+                    "pattern": "Products/{objectId}",
+                    "name": "idocitems",
+                    "target": [
+                        "idocitems"
+                    ]
+                },
+                {
+                    "pattern": "idoc/{}",
+                    "name": "idocmassedit",
+                    "target": [
+                        "idocmassedit"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetIdoc_Overview": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Idoc_Overview",
+                    "viewName": "Idoc_Overview"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewId": "notFound",
+                    "viewName": "NotFound",
+                    "transition": "show"
+                },
+                "idocitems": {
+                    "viewName": "Idoc_Items",
+                    "viewId": "idocitems",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "idocmassedit": {
+                    "viewType": "XML",
+                    "viewId": "idocmassedit",
+                    "viewName": "Idoc_MassEdit",
+                    "viewLevel": 2
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.idocmanagerui01.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}
